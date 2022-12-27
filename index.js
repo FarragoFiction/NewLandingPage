@@ -1,5 +1,6 @@
 
 window.onload = ()=>{
+  setCount();
   renderFilter();
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
@@ -35,6 +36,24 @@ const renderFilter = ()=>{
   }
 }
 
+const setCount=()=>{
+  const countEle = document.querySelector("#count");
+
+  let count = 0;
+  const entries = document.querySelectorAll(".entry");
+  if(countEle && entries){
+    for(let entry of entries){
+
+      if(entry.style.display !== "none"){
+        count++;
+      }
+    }
+  }
+
+  countEle.innerText="Count: " + count;
+
+}
+
 const applyFilter = (filter)=>{
   const entries = document.querySelectorAll(".entry");
   for(let entry of entries){
@@ -44,6 +63,7 @@ const applyFilter = (filter)=>{
       entry.style.display="none";
     }
   }
+  setCount();
   updateURLParams("filter="+filter)
 }
 

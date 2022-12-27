@@ -33,6 +33,14 @@ body {
 
 }
 
+#count{
+  vertical-align: top;
+  padding: 3px;
+  margin:13px; 
+  margin-right: 0px;
+  display: inline-block;
+}
+
 label{
   vertical-align: top;
   padding: 3px;
