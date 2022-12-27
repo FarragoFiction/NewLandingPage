@@ -1,0 +1,59 @@
+@font-face {
+  font-family: nunito;
+  src: url("Fonts/nunito/Nunito-Regular.ttf");
+}
+
+body {
+  background-color: rgb(237, 210, 135);
+  color: black;
+  margin: 0px;
+  overflow: auto;
+  font-size: 18px;
+  background-size: 255px;
+  font-family: 'nunito', sans-serif;
+}
+
+#container{
+  padding: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 90wh;
+}
+
+.fake-background {
+  width: 100%;
+  opacity: 0.4;
+  position: fixed;
+  filter: grayscale(1);
+  top: 0px;
+  left: 0px;
+  z-index: -999;
+
+}
+
+.entry{
+  display: inline-block;
+  vertical-align: top;
+  width: 300px;
+  height: 185;
+  padding: 16px;
+  border: 3px solid black;
+  border-radius: 8px;
+  background-color: rgb(237, 210, 135);
+  margin:13px;
+}
+
+
+
+a{
+  font-weight: bold;
+  color: #333;
+}
+
+a:visited{
+  color: black;
+}
+
+a:hover{
+  font-weight: lighter;
+}
