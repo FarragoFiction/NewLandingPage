@@ -1,3 +1,4 @@
+
 window.onload = ()=>{
   renderFilter();
   const queryString = window.location.search;
@@ -16,12 +17,18 @@ const renderFilter = ()=>{
     applyFilter(e.target.value);
   }
   if(controls){
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    let filter = urlParams.get('filter');
     const tags = fetchTags();
     for(let tag of tags){
       if(tag.trim()){
         const option = createElementWithClassAndParent("option", select)
         option.value = tag;
         option.innerText = tag;
+        if(tag === filter){
+          option.selected = true;
+        }
       }
 
     }
