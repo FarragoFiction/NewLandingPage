@@ -14,6 +14,7 @@ const createOneShamblingHorror = async(entry)=>{
   shambling_horror.style.background=`url(${image.src})`;
   shambling_horror.style.width = image.width;
   shambling_horror.style.height = image.height;
+  document.querySelector("body").append(image)
 
 }
 
@@ -45,10 +46,6 @@ const renderEleAsMuteImage = async (ele) => {
   });
   const url = DOMURL.createObjectURL(svg);
 
-  img.onload = function () {
-    console.log("JR NOTE: image loaded")
-    DOMURL.revokeObjectURL(url);
-  }
 
   img.src = url;
   return img;
