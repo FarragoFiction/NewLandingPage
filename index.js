@@ -75,3 +75,10 @@ const fetchTags = ()=>{
   }
   return uniq(ret.split(" "));
 }
+
+window.onclick = () => {
+  const audio = document.querySelector("#audio");
+  if (audio && !audio.playing) {
+    audio.play();
+  }
+}

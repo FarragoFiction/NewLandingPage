@@ -89,10 +89,16 @@ option{
   margin:13px; 
 }
 
+img{
+  filter: sepia(0.66) contrast(1.1);
+  display: block;
+}
+
 .entry{
   display: inline-block;
   vertical-align: top;
   width: 300px;
+  line-height: 20px;
   height: 185;
   padding: 16px;
   border: 3px solid black;
@@ -102,10 +108,30 @@ option{
 }
 
 
+.flourescent_lights{
+  background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(246,249,218,1) 3%, rgba(0,212,255,0) 100%);
+  height: 100px;
+  width: 100%;
+  opacity: 0.4;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  animation: fade-in  1ms steps(100) infinite;
+
+}
+
+@keyframes fade-in {
+  0% { opacity: 0.1; }
+  50% { opacity: 0.15; }
+  100% { opacity: 0.1; }
+
+}
+
 
 a{
   font-weight: bold;
   color: #333;
+  font-size: 28px;
 }
 
 a:visited{
