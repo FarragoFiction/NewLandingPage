@@ -8,6 +8,9 @@ window.onload = ()=>{
   if(filter){
     applyFilter(filter);
   }
+  const container = document.querySelector("#container");
+
+  renderEleAsMuteImage(document.querySelector(".entry"),container)
 
 }
 

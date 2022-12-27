@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <title>Farrago Fiction</title>
-  <link rel="stylesheet" href="index.css">
+  <link id="css" rel="stylesheet" href="index.css">
   <link rel="icon" href="favicon.ico">
   <script src="utils.js"></script>
+  <script src="canvas_fuckery.js"></script>
   <script src="index.js"></script>
 
 </head>
@@ -13,7 +14,7 @@
 
 <body>
   <img src="http://www.farragofiction.com/AudioLogs/images/wallpaper.png" class="fake-background">
-  <div  class="flourescent_lights"></div>
+  <div class="flourescent_lights"></div>
 
   <div id="container">
 
@@ -21,314 +22,345 @@
       <label for="filter">
         Filter:
       </label>
-      <select name ="filter" id="filter">
+      <select name="filter" id="filter">
 
       </select>
       <div id="count">Count:</div>
     </div>
-
-    <div class="entry meta">
-      <a target="_blank" href="http://farragofiction.com/Staging/">Old Homepage</a>
-      <p class="description">Here's what the home page used to look like, back when Farrago was trying to go legit.
-      </p>
-    </div>
-
-    <div class="entry sim homestuck main dart arg puzzle">
-      <a target="_blank" href="SBURBSim/landing.html">SBURBSim</a>
-      <p class="description">Procedural text and graphic simulations of SBURBSession from the Homestuck webcomic. Read
-        random sessions, or create custom characters to toss into the Game. (Written in dart, so no longer able to be
-        updated by JR).</p>
-    </div>
-
-    <div class="entry sim zampanio game farragnarok spiral horror main arg puzzle">
-      <a target="_blank" href="http://www.farragofiction.com/ZampanioSim">ZampanioSim</a>
-      <p class="description">Various attempts to capture the feel of the Zampanio fandom, including rumors and
-        fanhacks.  Navigate the branches at your own peril. Remember to hydrate and take breaks. Obsession is a dangerous thing. I'd recommend going North, first.
-      </p>
-    </div>
-
-    <div class="entry tool homestuck dart">
-      <a target="_blank" href="http://www.farragofiction.com/DollSim">DollSim</a>
-      <p class="description">Create your own shareable doll (that can be used in various older Farrago games), in a
-        variety of style (most notably, Homestuck sprites).
-      </p>
-    </div>
-
-    <div class="entry homestuck sim pet dart">
-      <a target="_blank" href="WigglerSim/landing.html">WigglerSim</a>
-      <p class="description">Take the role of a Jadeblooded Troll from homestuck and raise little wigglers all your own,
-        and prepare them for their lives outside of the caverns.
-      </p>
-    </div>
-
-    <div class="entry puzzle arg">
-      <a target="_blank" href="http://gigglesnort.info/">Gigglesnort</a>
-      <p class="description">KR made this :) :) :)
-      </p>
-    </div>
-
-    <div class="entry arg puzzle meta dart">
-      <a target="_blank" href="http://www.farragofiction.com/AudioLogs/collection.html">AudioLogs</a>
-      <p class="description">Want to hear an eclectic mix of audio logs that can be discovered in various other games
-        (or a few through puzzles on the AudioLog page itself?). Go wild.
-      </p>
-    </div>
-
-    <div class="entry meta homestuck dart">
-      <a target="_blank" href="http://www.farragofiction.com/FridgeSim/index.html?misc=true">FridgeSim</a>
-      <p class="description">Collection of fanart submitted, mostly about SBURBSim!
-      </p>
-    </div>
-
-    <div class="entry farragnarok ">
-      <a target="_blank" href="http://farragofiction.com/PaldemicSim/bio.html?target=yggdrasilsYeoman">Farragnarok Char
-        Guide</a>
-      <p class="description">Curious as to what all this "Farragnarok" stuff is about? Check out the main cast!
-      </p>
-    </div>
-
-    <div class="entry farragnarok arg puzzle horror game land dart">
-      <a target="_blank" href="LOHAE/landing.html">LOHAE</a>
-      <p class="description">First game in the Farragnarok series, help Zawhei Bacama, the Reaper of Life, grow and pick fruits
-        on the Land of Horticulture and Essence.  There are definitely no secrets in this zen gardening game.
-      </p>
-    </div>
-
-    <div class="entry farragnarok arg puzzle game land dart">
-      <a target="_blank" href="http://www.farragofiction.com/LOMAT/">LOMAT</a>
-      <p class="description">Second game in the Farragnarok series, help ButlerBot clean up after his fleshy
-        doppelganger, Eirikr Kharun, the Guide of Void. (Note: Last Land we see in the Farragnarok Series, due to the
-        Wasted Guide of Void's Interference).</p>
-      </p>
-    </div>
-
-
-
-    <div class="entry homestuck game puzzle land minisim dart">
-      <a target="_blank" href="http://www.farragofiction.com/LOGAC/">LOGAC</a>
-      <p class="description">Game for the Wright of Law, help owl consorts of the Land of Games and Confusion compromise
-        on rules so they can get back to playing!
-      </p>
-    </div>
-
-    <div class="entry tool puzzle dart">
-      <a target="_blank" href="PaldemicSim">PaldemicSim</a>
-        <p class="description">See DMs between various characters and even write your own. Apollo's gift of prophecy struck hard, this was named pre-pandemic.
+    <div id="entries">
+      <div class="entry meta">
+        <a target="_blank" href="http://farragofiction.com/Staging/">Old Homepage</a>
+        <p class="description">Here's what the home page used to look like, back when Farrago was trying to go legit.
         </p>
+      </div>
+
+      <div class="entry sim homestuck main dart arg puzzle">
+        <a target="_blank" href="SBURBSim/landing.html">SBURBSim</a>
+        <p class="description">Procedural text and graphic simulations of SBURBSession from the Homestuck webcomic. Read
+          random sessions, or create custom characters to toss into the Game. (Written in dart, so no longer able to be
+          updated by JR).</p>
+      </div>
+
+      <div class="entry sim zampanio game farragnarok spiral horror main arg puzzle">
+        <a target="_blank" href="http://www.farragofiction.com/ZampanioSim">ZampanioSim</a>
+        <p class="description">Various attempts to capture the feel of the Zampanio fandom, including rumors and
+          fanhacks. Navigate the branches at your own peril. Remember to hydrate and take breaks. Obsession is a
+          dangerous thing. I'd recommend going North, first.
+        </p>
+      </div>
+
+      <div class="entry tool homestuck dart">
+        <a target="_blank" href="http://www.farragofiction.com/DollSim">DollSim</a>
+        <p class="description">Create your own shareable doll (that can be used in various older Farrago games), in a
+          variety of style (most notably, Homestuck sprites).
+        </p>
+      </div>
+
+      <div class="entry homestuck sim pet dart">
+        <a target="_blank" href="WigglerSim/landing.html">WigglerSim</a>
+        <p class="description">Take the role of a Jadeblooded Troll from homestuck and raise little wigglers all your
+          own,
+          and prepare them for their lives outside of the caverns.
+        </p>
+      </div>
+
+      <div class="entry puzzle arg">
+        <a target="_blank" href="http://gigglesnort.info/">Gigglesnort</a>
+        <p class="description">KR made this :) :) :)
+        </p>
+      </div>
+
+      <div class="entry arg puzzle meta dart">
+        <a target="_blank" href="http://www.farragofiction.com/AudioLogs/collection.html">AudioLogs</a>
+        <p class="description">Want to hear an eclectic mix of audio logs that can be discovered in various other games
+          (or a few through puzzles on the AudioLog page itself?). Go wild.
+        </p>
+      </div>
+
+      <div class="entry meta homestuck dart">
+        <a target="_blank" href="http://www.farragofiction.com/FridgeSim/index.html?misc=true">FridgeSim</a>
+        <p class="description">Collection of fanart submitted, mostly about SBURBSim!
+        </p>
+      </div>
+
+      <div class="entry farragnarok ">
+        <a target="_blank" href="http://farragofiction.com/PaldemicSim/bio.html?target=yggdrasilsYeoman">Farragnarok
+          Char
+          Guide</a>
+        <p class="description">Curious as to what all this "Farragnarok" stuff is about? Check out the main cast!
+        </p>
+      </div>
+
+      <div class="entry farragnarok arg puzzle horror game land dart">
+        <a target="_blank" href="LOHAE/landing.html">LOHAE</a>
+        <p class="description">First game in the Farragnarok series, help Zawhei Bacama, the Reaper of Life, grow and
+          pick fruits
+          on the Land of Horticulture and Essence. There are definitely no secrets in this zen gardening game.
+        </p>
+      </div>
+
+      <div class="entry farragnarok arg puzzle game land dart">
+        <a target="_blank" href="http://www.farragofiction.com/LOMAT/">LOMAT</a>
+        <p class="description">Second game in the Farragnarok series, help ButlerBot clean up after his fleshy
+          doppelganger, Eirikr Kharun, the Guide of Void. (Note: Last Land we see in the Farragnarok Series, due to the
+          Wasted Guide of Void's Interference).</p>
+        </p>
+      </div>
+
+
+
+      <div class="entry homestuck game puzzle land minisim dart">
+        <a target="_blank" href="http://www.farragofiction.com/LOGAC/">LOGAC</a>
+        <p class="description">Game for the Wright of Law, help owl consorts of the Land of Games and Confusion
+          compromise
+          on rules so they can get back to playing!
+        </p>
+      </div>
+
+      <div class="entry tool puzzle dart">
+        <a target="_blank" href="PaldemicSim">PaldemicSim</a>
+        <p class="description">See DMs between various characters and even write your own. Apollo's gift of prophecy
+          struck hard, this was named pre-pandemic.
+        </p>
+      </div>
+
+      <div class="entry arg puzzle">
+        <a target="_blank" href="AprilARGs">April ARGS</a>
+        <p class="description">Link to a collection of past April ARGs. Not up to date.
+        </p>
+      </div>
+
+      <div class="entry game minisim dart">
+        <a target="_blank" href="MagicalGirlSim/nicesim.html">Magical Girl Sim</a>
+        <p class="description">I barely remember making this! It...looks like some kind of dress up game where you send
+          magical girls on adventures? Mostly I remember it for spawning MonsterGirlSim for that Ludum Dare....
+        </p>
+      </div>
+
+
+      <div class="entry horror puzzle game minisim dart">
+        <a target="_blank" href="MagicalGirlSim/index.html">MonsterGirlSim</a>
+        <p class="description">Haha yeah, there it is. It was so cool it made MagicalGirlSim be a side page in it's own
+          folder. This was an entry in Ludum Dare. Help the various Magical Girls protect the city without paying too
+          steep a price.
+        </p>
+      </div>
+
+
+      <div class="entry new sim horror game puzzle zampanio minisim">
+        <a target="_blank" href="99RoomsSim">99RoomsSim</a>
+        <p class="description">Tired of wandering the Backrooms? Settle in for some nice and relaxing picture viewing.
+          Wander far more than 99 rooms as you look for Doors and avoid (or collect) glitches.
+        </p>
+      </div>
+
+
+      <div class="entry horror sim puzzle arg zampanio minisim">
+        <a target="_blank" href="http://knucklessux.com/HydrationSim/?seed=133387367">HydrationSim</a>
+        <p class="description">You DO know farragofiction.com isn't the only site I run, didn't you? Remember to stay
+          hydrated. (Runs on the ZampanioSim engine used by my first three branches of Zampanio.)
+        </p>
+      </div>
+
+
+
+      <div class="entry game minisim dart tool">
+        <a target="_blank" href="MindGardenSim">Garden of the Mind</a>
+        <p class="description">Runs a bit hot because I didn't know animations very well back then. Practice typing out
+          affirmations and fighting off brain lies in this ACTUAL chill garden game.
+        </p>
+      </div>
+
+
+
+      <div class="entry homestuck land game puzzle minisim">
+        <a target="_blank" href="AudioLogs/loras2.html">LORAS</a>
+        <p class="description">Haha, that's right, I went and took my land, (The Land of Rods and Screens) and made a
+          version that isn't forced to be a sub bit of SBURBSim anymore. Ah, memories.
+        </p>
+      </div>
+
+
+
+      <div class="entry farragnarok minisim puzzle dart">
+        <a target="_blank" href="http://www.farragnarok.com/AnyNonExistingPage">ButlerBot</a>
+        <p class="description">Talk to ButlerBot. He's lonely out there in the void. I hope he's not starting to lose it
+          with so little to do... Or just read his logs and see what other people are saying to him. Unless its his
+          lunchbreak and legally mandated two fifteen minute beaks, of course.
+        </p>
+      </div>
+
+
+
+      <div class="entry minisim homestuck puzzle arg tool dart">
+        <a target="_blank" href="LifeSim">LifeSim</a>
+        <p class="description">Inspired by the game of life from Problem Sleuth, watch how your life plays out based on
+          what cards you get dealt. In theory you can create your own custom life, but I wildly overestimated how easy
+          to use the tools are.
+        </p>
+      </div>
+
+
+
+      <div class="entry game puzzle homestuck minisim dart">
+        <a target="_blank" href="AlchemySim">AlchemySim</a>
+        <p class="description">Play around with my take on the Alchemy system from homestuck. Collect all the
+          achievements!
+        </p>
+      </div>
+
+
+
+
+      <div class="entry minisim puzzle arg zampanio">
+        <a target="_blank" href="http://eyedolgames.com/Gender/">GenderSim</a>
+        <p class="description">Have you ever wondered what gender you are? Why not try the worst possible way to find
+          out? WARNING: DOES NOT END.
+        </p>
+      </div>
+
+
+      <div class="entry minisim sim dart">
+        <a target="_blank" href="AntSim">AntSim</a>
+        <p class="description">These are definitely ants and this is definitely simulation them. It is extremely
+          important that you read <a href="https://farragofiction.fandom.com/wiki/Antsim">this</a>. "As with any Farrago
+          product, the true goal of the game is to look inside and discover what the goal is for yourself."
+        </p>
+      </div>
+
+
+      <div class="entry game puzzle arg dart">
+        <a target="_blank" href="AtticSim"">AtticSim</a>
+      <p class=" description">A traditional text based adventure game for reasons that I'm sure are obvious.
+          </p>
+      </div>
+
+
+      <div class="entry minisim dart tool">
+        <a target="_blank" href="PaleSim">PaleSim</a>
+        <p class="description">Refreshes every five minutes with positive messages.
+        </p>
+      </div>
+
+
+
+      <div class="entry minisim rot dart tool">
+        <a target="_blank" href="http://www.farragofiction.com/MiniSims/CardSim">CardSim</a>
+        <p class="description">This appears to no longer fully work. It used to generate random trading cards out of
+          DollSim assets. Rest in peace. The Rot comes for us all in the end.
+        </p>
+      </div>
+
+
+      <div class="entry rot minisim homestuck dart">
+        <a target="_blank" href="http://farragofiction.com/MiniSims/StrifeSim">StrifeSim</a>
+        <p class="description">One of the first things I did with animation and graphics. It appears to no longer fully
+          work. It used to generate little procedural strifes, like from homestuck. You'd start fighting a parent, then
+          move to regular imps, then to a denizen, then a Queen.
+        </p>
+      </div>
+
+
+      <div class="entry minisim">
+        <a target="_blank" href="Midnight">Midnight</a>
+        <p class="description">A story written by manicInsomniac that I gave polish to via web effects.
+        </p>
+      </div>
+
+
+      <div class="entry rot minisim dart">
+        <a target="_blank" href="http://farragofiction.com/TurtleSim/">TurtleSim</a>
+        <p class="description">The rot takes all in the end. It no longer fully works. It used to render a turtle doll
+          of a random color that you could click on to make it say the 'fuck' word, based on a glitch in SBURBSim. The
+          Turtle doens't render but you can click its ghost and it seems to still work.
+        </p>
+      </div>
+
+
+      <div class="entry homestuck sim">
+        <a target="_blank" href="SBURBSimJS/landing.html">SBURBSim Classic</a>
+        <p class="description">SBURBSim as it existed very earily in it's life, written in pure javascript instead of
+          dart and missing many features. (AB is blazing fast tho cuz no AiEngine).
+        </p>
+      </div>
+
+      <div class="entry homestuck sim">
+        <a target="_blank" href="http://farragofiction.com/SBURBSim113/">SBURBSim 1.0</a>
+        <p class="description">SBURBSim in its very first form, no graphics, extremely barebones.
+        </p>
+      </div>
+
+      <div class="entry tool">
+        <a target="_blank" href="RigidHeddleSim">Rigid Heddle Sim</a>
+        <p class="description">Look, we all got pandemic hobbies. This helped me learn to weave.
+        </p>
+      </div>
+
+
+      <div class="entry minisim">
+        <a target="_blank" href="CloudSim">CloudSim</a>
+        <p class="description">KR made this! Watch chill clouds float by synced to time of day.
+        </p>
+      </div>
+
+
+
+
+      <div class="entry minisim">
+        <a target="_blank" href="http://farragofiction.com/past.html">Past Work</a>
+        <p class="description">A various medley of things I (JR) did before farrago fiction.
+        </p>
+      </div>
+
+
+      <div class="entry meta">
+        <a target="_blank" href="https://farragofiction.fandom.com/wiki/FarragoFiction_Wiki">Farrago Wiki</a>
+        <p class="description">Ah, memories.
+        </p>
+      </div>
+
+      <div class="entry">
+        <a target="_blank" href="https://zampaniosim.fandom.com/wiki/ZampanioSim_Wiki">ZampanioSim Wiki</a>
+        <p class="description">Welcome to the ZampanioSim Wiki!
+          A map of the labyrinth of ZampanioSim, made by liars and madmen. If you stare at it long enough, you might
+          recognize something important when the time comes.
+        </p>
+      </div>
+
+      <div class="entry">
+        <a target="_blank" href="https://discord.gg/N5WEdC8">Discord</a>
+        <p class="description">???
+        </p>
+      </div>
+
+      <div class="entry">
+        <a target="_blank" href="https://github.com/FarragoFiction">Github</a>
+        <p class="description">Tired of trying to read code directly from the page? Most of FarragoFiction's games and
+          not-games have their source publically available here. Free to use! Be the change you want to see in the
+          world!
+        </p>
+      </div>
+
+      <div class="entry minisim">
+        <a target="_blank" href="http://knucklessux.com/InfoTokenReader/">InfoToken Reader</a>
+        <p class="description">If you know what a Quotidian is, this is how they store memory internally.
+        </p>
+      </div>
+
+      <div class="entry tool">
+        <a target="_blank" href="http://knucklessux.com/InfoTokenReader/?mode=loop">Mirror Corruption Tool</a>
+        <p class="description">Would you like to have Severe Mirror Corruption, just like the Loopist Faction of the
+          Quotidian Quorum? Now you can!
+        </p>
+      </div>
+
     </div>
-
-    <div class="entry arg puzzle">
-      <a target="_blank" href="AprilARGs">April ARGS</a>
-      <p class="description">Link to a collection of past April ARGs. Not up to date.
-      </p>
-    </div>
-
-    <div class="entry game minisim dart">
-      <a target="_blank" href="MagicalGirlSim/nicesim.html">Magical Girl Sim</a>
-      <p class="description">I barely remember making this! It...looks like some kind of dress up game where you send magical girls on adventures? Mostly I remember it for spawning MonsterGirlSim for that Ludum Dare....
-      </p>
-    </div>
-
-
-    <div class="entry horror puzzle game minisim dart">
-      <a target="_blank" href="MagicalGirlSim/index.html">MonsterGirlSim</a>
-      <p class="description">Haha yeah, there it is. It was so cool it made MagicalGirlSim be a side page in it's own folder. This was an entry in Ludum Dare. Help the various Magical Girls protect the city without paying too steep a price.
-      </p>
-    </div>
-
-
-    <div class="entry new sim horror game puzzle zampanio minisim">
-      <a target="_blank" href="99RoomsSim">99RoomsSim</a>
-      <p class="description">Tired of wandering the Backrooms? Settle in for some nice and relaxing picture viewing. Wander far more than 99 rooms as you look for Doors and avoid (or collect) glitches.
-      </p>
-    </div>
-
-
-    <div class="entry horror sim puzzle arg zampanio minisim">
-      <a target="_blank" href="http://knucklessux.com/HydrationSim/?seed=133387367">HydrationSim</a>
-      <p class="description">You DO know farragofiction.com isn't the only site I run, didn't you?  Remember to stay hydrated. (Runs on the ZampanioSim engine used by my first three branches of Zampanio.)
-      </p>
-    </div>
-
-
-
-    <div class="entry game minisim dart tool">
-      <a target="_blank" href="MindGardenSim">Garden of the Mind</a>
-      <p class="description">Runs a bit hot because I didn't know animations very well back then. Practice typing out affirmations and fighting off brain lies in this ACTUAL chill garden game.
-      </p>
-    </div>
-
-
-
-    <div class="entry homestuck land game puzzle minisim">
-      <a target="_blank" href="AudioLogs/loras2.html">LORAS</a>
-      <p class="description">Haha, that's right, I went and took my land, (The Land of Rods and Screens) and made a version that isn't forced to be a sub bit of SBURBSim anymore. Ah, memories.
-      </p>
-    </div>
-
-
-
-    <div class="entry farragnarok minisim puzzle dart">
-      <a target="_blank" href="http://www.farragnarok.com/AnyNonExistingPage">ButlerBot</a>
-      <p class="description">Talk to ButlerBot. He's lonely out there in the void. I hope he's not starting to lose it with so little to do... Or just read his logs and see what other people are saying to him. Unless its his lunchbreak and legally mandated two fifteen minute beaks, of course.
-      </p>
-    </div>
-
-
-
-    <div class="entry minisim homestuck puzzle arg tool dart">
-      <a target="_blank" href="LifeSim">LifeSim</a>
-      <p class="description">Inspired by the game of life from Problem Sleuth, watch how your life plays out based on what cards you get dealt. In theory you can create your own custom life, but I wildly overestimated how easy to use the tools are.
-      </p>
-    </div>
-
-
-
-    <div class="entry game puzzle homestuck minisim dart">
-      <a target="_blank" href="AlchemySim">AlchemySim</a>
-      <p class="description">Play around with my take on the Alchemy system from homestuck. Collect all the achievements!
-      </p>
-    </div>
-
-
-
-
-    <div class="entry minisim puzzle arg zampanio">
-      <a target="_blank" href="http://eyedolgames.com/Gender/">GenderSim</a>
-      <p class="description">Have you ever wondered what gender you are? Why not try the worst possible way to find out? WARNING: DOES NOT END.
-      </p>
-    </div>
-
-
-    <div class="entry minisim sim dart">
-      <a target="_blank" href="AntSim">AntSim</a>
-      <p class="description">These are definitely ants and this is definitely simulation them.  It is extremely important that you read <a href="https://farragofiction.fandom.com/wiki/Antsim">this</a>. "As with any Farrago product, the true goal of the game is to look inside and discover what the goal is for yourself."
-      </p>
-    </div>
-
-
-    <div class="entry game puzzle arg dart">
-      <a target="_blank" href="AtticSim"">AtticSim</a>
-      <p class="description">A traditional text based adventure game for reasons that I'm sure are obvious.
-      </p>
-    </div>
-
-
-    <div class="entry minisim dart tool">
-      <a target="_blank" href="PaleSim">PaleSim</a>
-      <p class="description">Refreshes every five minutes with positive messages.
-      </p>
-    </div>
-
-
-
-    <div class="entry minisim rot dart tool">
-      <a target="_blank" href="http://www.farragofiction.com/MiniSims/CardSim">CardSim</a>
-      <p class="description">This appears to no longer fully work. It used to generate random trading cards out of DollSim assets. Rest in peace. The Rot comes for us all in the end.
-      </p>
-    </div>
-
-
-    <div class="entry rot minisim homestuck dart">
-      <a target="_blank" href="http://farragofiction.com/MiniSims/StrifeSim">StrifeSim</a>
-      <p class="description">One of the first things I did with animation and graphics. It appears to no longer fully work. It used to generate little procedural strifes, like from homestuck. You'd start fighting a parent, then move to regular imps, then to a denize, then a Queen.
-      </p>
-    </div>
-
-
-    <div class="entry minisim">
-      <a target="_blank" href="Midnight">Midnight</a>
-      <p class="description">A story written by manicInsomniac that I gave polish to via web effects.
-      </p>
-    </div>
-
-
-    <div class="entry rot minisim dart">
-      <a target="_blank" href="http://farragofiction.com/TurtleSim/">TurtleSim</a>
-      <p class="description">The rot takes all in the end. It no longer fully works. It used to render a turtle doll of a random color that you could click on to make it say the 'fuck' word, based on a glitch in SBURBSim. The Turtle doens't render but you can click its ghost and it seems to still work.
-      </p>
-    </div>
-
-
-    <div class="entry homestuck sim">
-      <a target="_blank" href="SBURBSimJS/landing.html">SBURBSim Classic</a>
-      <p class="description">SBURBSim as it existed very earily in it's life, written in pure javascript instead of dart and missing many features. (AB is blazing fast tho cuz no AiEngine).
-      </p>
-    </div>
-
-    <div class="entry homestuck sim">
-      <a target="_blank" href="http://farragofiction.com/SBURBSim113/">SBURBSim 1.0</a>
-      <p class="description">SBURBSim in its very first form, no graphics, extremely barebones.
-      </p>
-    </div>
-
-    <div class="entry tool">
-      <a target="_blank" href="RigidHeddleSim">Rigid Heddle Sim</a>
-      <p class="description">Look, we all got pandemic hobbies. This helped me learn to weave.
-      </p>
-    </div>
-
-
-    <div class="entry minisim">
-      <a target="_blank" href="CloudSim">CloudSim</a>
-      <p class="description">KR made this! Watch chill clouds float by synced to time of day.
-      </p>
-    </div>
-
-
-
-
-    <div class="entry minisim">
-      <a target="_blank" href="http://farragofiction.com/past.html">Past Work</a>
-      <p class="description">A various medley of things I (JR) did before farrago fiction.
-      </p>
-    </div>
-
-
-    <div class="entry meta">
-      <a target="_blank" href="https://farragofiction.fandom.com/wiki/FarragoFiction_Wiki">Farrago Wiki</a>
-      <p class="description">Ah, memories.
-      </p>
-    </div>
-
-    <div class="entry">
-      <a target="_blank" href="https://zampaniosim.fandom.com/wiki/ZampanioSim_Wiki">ZampanioSim Wiki</a>
-      <p class="description">Welcome to the ZampanioSim Wiki!
-        A map of the labyrinth of ZampanioSim, made by liars and madmen. If you stare at it long enough, you might recognize something important when the time comes.
-      </p>
-    </div>
-
-    <div class="entry">
-      <a target="_blank" href="https://discord.gg/N5WEdC8">Discord</a>
-      <p class="description">???
-      </p>
-    </div>
-
-    <div class="entry">
-      <a target="_blank" href="https://github.com/FarragoFiction">Github</a>
-      <p class="description">Tired of trying to read code directly from the page? Most of FarragoFiction's games and not-games have their source publically available here. Free to use! Be the change you want to see in the world!
-      </p>
-    </div>
-
-    <div class="entry minisim">
-      <a target="_blank" href="http://knucklessux.com/InfoTokenReader/">InfoToken Reader</a>
-      <p class="description">If you know what a Quotidian is, this is how they store memory internally.
-      </p>
-    </div>
-
-    <div class="entry tool">
-      <a target="_blank" href="http://knucklessux.com/InfoTokenReader/?mode=loop">Mirror Corruption Tool</a>
-      <p class="description">Would you like to have Severe Mirror Corruption, just like the Loopist Faction of the Quotidian Quorum? Now you can!
-      </p>
-    </div>
-
-
-    <img src ="fflogoSmol.png">
+    <img id="logo" src="fflogoSmol.png">
 
   </div>
   <audio autoplay loop id="audio">
     <source src="125064__everydaysounds__faulty-fluorescent-light-starter-hum.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
+    Your browser does not support the audio element.
   </audio>
 </body>
 
