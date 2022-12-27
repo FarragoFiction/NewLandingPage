@@ -76,8 +76,18 @@ img#logo{
   display: block;
 }
 
+.shambling-horror{
+  position: absolute;
+  pointer-events: none;
+  z-index: 1000;
+  top:-16px;
+  left: -16px;
+  filter: grayscale();
+}
+
 .entry{
   display: inline-block;
+  position: relative;
   vertical-align: top;
   width: 300px;
   line-height: 20px;

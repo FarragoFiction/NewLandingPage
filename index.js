@@ -10,7 +10,7 @@ window.onload = ()=>{
   }
   const container = document.querySelector("#container");
 
-  renderEleAsMuteImage(document.querySelector(".entry"),container)
+  beginMakingShamblingHorrorsOfEntries()
 
 }
 
