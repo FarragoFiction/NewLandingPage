@@ -11,15 +11,15 @@ window.onload = ()=>{
   if(filter){
     applyFilter(filter);
   }
-  const container = document.querySelector("#container");
+  isItGiggleTime();
 
+}
+
+const isItGiggleTime = ()=>{
   beginMakingShamblingHorrorsOfEntries()
- // beginMakingShamblingHorrorsOfEntries();
-  //beginMakingShamblingHorrorsOfEntries()
-  //beginMakingShamblingHorrorsOfEntries()
-  //beginMakingShamblingHorrorsOfEntries()
-  //beginMakingShamblingHorrorsOfEntries()
 
+  const warning = document.querySelector("#warning");
+  warning.innerText = "WARNING: RUN.";
 }
 
 
