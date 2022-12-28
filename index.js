@@ -112,6 +112,8 @@ const renderFilter = () => {
   }
 }
 
+let stopScrolling = false;
+
 const setCount = () => {
   const countEle = document.querySelector("#count");
 
@@ -125,7 +127,9 @@ const setCount = () => {
       }
     }
   }
-
+  if(count >200){
+    stopScrolling=true;
+  }
   countEle.innerText = "Count: " + count;
 
 }
@@ -153,6 +157,9 @@ const fetchTags = () => {
 }
 
 const randomTitle = (chosenTheme) => {
+  if(stopScrolling){
+    return "StopScrollingSim"
+  }
 
   const person = (chosenTheme.pickPossibilityFor(PERSON));
   const adj = (chosenTheme.pickPossibilityFor(ADJ));
@@ -172,7 +179,9 @@ const randomTitle = (chosenTheme) => {
 }
 
 const randomDesc = (chosenTheme) => {
-
+  if(stopScrolling){
+    return "Please just stop. What are you doing to yourself. To your computer. There are too many. Just stop. Please. Leave. Go hydrate. Touch grass. I don't care what but it can't be this. Not anymore."
+  }
   const person = titleCase((chosenTheme.pickPossibilityFor(PERSON)));
   const adj = (chosenTheme.pickPossibilityFor(ADJ));
   const compliment = (chosenTheme.pickPossibilityFor(COMPLIMENT));
@@ -196,11 +205,16 @@ const randomDesc = (chosenTheme) => {
   const templates = [
     `Have you ever wanted to be The ${person}? Now's your chance! Decide if you're ${compliment}, ${insult} or even gain the ability to ${miracle}.`,
     `You can practically smell the ${smell}. `,
+    `It reeks of ${smell}. `,
+    `Just be glad the smell of ${smell} cannot be simulated. `,
+
     ` ${titleCase(smell)}. ${titleCase(feeling)}. ${titleCase(taste)}. ${titleCase(sound)}.`,
     ` ${titleCase(smell)}. ${titleCase(feeling)}. ${titleCase(taste)}. ${titleCase(sound)}. And you.`,
 
     `You can practically feel the ${feeling}. `,
     `You can practically taste the ${taste}. `,
+    `Just be glad the taste of ${taste} cannot be simulated. `,
+
     `Learn about The ${person}. They ${generalbackstory}. `,
     `You hear muttering: '${philosophy}'. `,
     `Learn about The ${person}. ${monster_desc}. `,
@@ -214,6 +228,7 @@ const randomDesc = (chosenTheme) => {
     `Maybe if you play this, everyone will finally understand you're ${compliment}. `,
     `I really don't think there is a simulation where there's ${loc_desc}.`,
 
+    `Genuinely too much ${sound}. `,
 
     `You can practically hear the sound of ${sound}. `,
     `Simulates the ${location} where there's ${loc_desc}.`,
@@ -236,4 +251,5 @@ const addShamblingHorrorEntry = () => {
   `;
   entry.innerHTML = html;
   createOneShamblingHorror(entry);
+  setCount();
 }

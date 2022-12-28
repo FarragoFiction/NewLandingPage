@@ -262,7 +262,7 @@ const initPeople = () => {
     person_posibilities[WEB] = ["spider", "weaver", "spider","puppet"];
     person_posibilities[ROYALTY] = ["king", "queen", "lord"];
     person_posibilities[ENDINGS] = ["prince"];
-    person_posibilities[KNOWING] = ["scholar", "sage", "rofessor"];
+    person_posibilities[KNOWING] = ["scholar", "sage", "professor"];
     person_posibilities[GUIDING] = ["guru", "sage", "mentor","guide","sherpa"];
     person_posibilities[CRAFTING] = ["logger","miner","craftsman","blacksmith","smith","seamstress"];
     person_posibilities[LANGUAGE] = ["author", "writer"];
