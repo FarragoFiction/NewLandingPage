@@ -196,13 +196,23 @@ const randomDesc = (chosenTheme) => {
   const templates = [
     `Have you ever wanted to be The ${person}? Now's your chance! Decide if you're ${compliment}, ${insult} or even gain the ability to ${miracle}.`,
     `You can practically smell the ${smell}. `,
+    ` ${titleCase(smell)}. ${titleCase(feeling)}. ${titleCase(taste)}. ${titleCase(sound)}.`,
+    ` ${titleCase(smell)}. ${titleCase(feeling)}. ${titleCase(taste)}. ${titleCase(sound)}. And you.`,
+
     `You can practically feel the ${feeling}. `,
     `You can practically taste the ${taste}. `,
     `Learn about The ${person}. They ${generalbackstory}. `,
     `You hear muttering: '${philosophy}'. `,
     `Learn about The ${person}. ${monster_desc}. `,
+    `Have you ever heard about The ${person}. ${monster_desc}. `,
+    `It's okay. You can stop now. Just stop.`,
+    `You can leave any time. No one will call you ${insult}.`,
+    `Why did you come here? Did you not know that Midnight and Fridays are special? Not just here, either. <a target="_blank" href = 'http://farragofiction.com/LitRPGSimE/?friday=true'>I wonder if this link has rotten away?</a>`,
+    `The ${person} ${childbackstory}.`,
     `Learn how ${effects}. `,
     `It's okay. No one will be able to tell you're ${insult}. `,
+    `Maybe if you play this, everyone will finally understand you're ${compliment}. `,
+    `I really don't think there is a simulation where there's ${loc_desc}.`,
 
 
     `You can practically hear the sound of ${sound}. `,
