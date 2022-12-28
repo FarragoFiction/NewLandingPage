@@ -46,6 +46,9 @@ const isItGiggleTime = async () => {
   if (hackedGiggles || new Date().getHours() == 0 || new Date().getDay() === 5) {
     console.log("JR NOTE: Yes!!! :) :) :)")
     initThemes();
+    if(hackedGiggles){
+      infiniteMode(); //so i can debug
+    }
 
     beginMakingShamblingHorrorsOfEntries()
 
@@ -199,6 +202,8 @@ const randomDesc = (chosenTheme) => {
     `You hear muttering: '${philosophy}'. `,
     `Learn about The ${person}. ${monster_desc}. `,
     `Learn how ${effects}. `,
+    `It's okay. No one will be able to tell you're ${insult}. `,
+
 
     `You can practically hear the sound of ${sound}. `,
     `Simulates the ${location} where there's ${loc_desc}.`,
