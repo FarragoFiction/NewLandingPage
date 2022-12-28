@@ -45,6 +45,7 @@ const isItGiggleTime = async () => {
   //midnight and fridays are giggle time
   if (hackedGiggles || new Date().getHours() == 0 || new Date().getDay() === 5) {
     console.log("JR NOTE: Yes!!! :) :) :)")
+    initThemes();
 
     beginMakingShamblingHorrorsOfEntries()
 
@@ -65,9 +66,15 @@ const isItGiggleTime = async () => {
 
 
 const infiniteMode = () => {
-  console.log("JR NOTE: infinite mode?")
+  let lastScroll = 0;
+  let lastScrollTime = 0; //not to spam events
   window.onscroll = () => {
-    console.log("JR NOTE: scroll")
+    const newTime = new Date().getTime();
+    if (((newTime - lastScrollTime)) < 300) {
+      return;
+    }
+    lastScrollTime = newTime;
+
     window.requestAnimationFrame(() => {
       addShamblingHorrorEntry();
     });
@@ -142,17 +149,76 @@ const fetchTags = () => {
   return uniq(ret.split(" "));
 }
 
+const randomTitle = (chosenTheme) => {
+
+  const person = (chosenTheme.pickPossibilityFor(PERSON));
+  const adj = (chosenTheme.pickPossibilityFor(ADJ));
+  const compliment = (chosenTheme.pickPossibilityFor(COMPLIMENT));
+  const insult = (chosenTheme.pickPossibilityFor(INSULT));
+  const supermove = (chosenTheme.pickPossibilityFor(SUPERMOVE));
+  const object = (chosenTheme.pickPossibilityFor(OBJECT));
+  const location = (chosenTheme.pickPossibilityFor(LOCATION));
+
+
+  const smell = (chosenTheme.pickPossibilityFor(SMELL));
+  const taste = (chosenTheme.pickPossibilityFor(TASTE));
+  const feeling = (chosenTheme.pickPossibilityFor(FEELING));
+  const sound = (chosenTheme.pickPossibilityFor(SOUND));
+  const options = [sound, feeling, taste, smell, person, adj, compliment, insult, supermove, object, location];
+  return pickFrom(options);
+}
+
+const randomDesc = (chosenTheme) => {
+
+  const person = titleCase((chosenTheme.pickPossibilityFor(PERSON)));
+  const adj = (chosenTheme.pickPossibilityFor(ADJ));
+  const compliment = (chosenTheme.pickPossibilityFor(COMPLIMENT));
+  const insult = (chosenTheme.pickPossibilityFor(INSULT));
+  const supermove = (chosenTheme.pickPossibilityFor(SUPERMOVE));
+  const object = (chosenTheme.pickPossibilityFor(OBJECT));
+  const location = titleCase(chosenTheme.pickPossibilityFor(LOCATION));
+  const philosophy = (chosenTheme.pickPossibilityFor(PHILOSOPHY));
+
+  const childbackstory = (chosenTheme.pickPossibilityFor(CHILDBACKSTORY));
+  const generalbackstory = (chosenTheme.pickPossibilityFor(GENERALBACKSTORY));
+  const miracle = (chosenTheme.pickPossibilityFor(MIRACLE));
+  const loc_desc = (chosenTheme.pickPossibilityFor(LOC_DESC));
+  const monster_desc = (chosenTheme.pickPossibilityFor(MONSTER_DESC));
+  const smell = (chosenTheme.pickPossibilityFor(SMELL));
+  const taste = (chosenTheme.pickPossibilityFor(TASTE));
+  const feeling = (chosenTheme.pickPossibilityFor(FEELING));
+  const sound = (chosenTheme.pickPossibilityFor(SOUND));
+  const effects = (chosenTheme.pickPossibilityFor(EFFECTS));
+
+  const templates = [
+    `Have you ever wanted to be The ${person}? Now's your chance! Decide if you're ${compliment}, ${insult} or even gain the ability to ${miracle}.`,
+    `You can practically smell the ${smell}. `,
+    `You can practically feel the ${feeling}. `,
+    `You can practically taste the ${taste}. `,
+    `Learn about The ${person}. They ${generalbackstory}. `,
+    `You hear muttering: '${philosophy}'. `,
+    `Learn about The ${person}. ${monster_desc}. `,
+    `Learn how ${effects}. `,
+
+    `You can practically hear the sound of ${sound}. `,
+    `Simulates the ${location} where there's ${loc_desc}.`,
+  ]
+  return pickFrom(templates);
+}
+
 
 const addShamblingHorrorEntry = () => {
-  console.log("JR NOTE: Zampanio is a really fun game.")
+  const chosenThemeKey = pickFrom(Object.keys(all_themes));
+  const chosenTheme = all_themes[chosenThemeKey];
   const entries = document.querySelector("#entries");
   entry = createElementWithClassAndParent("div", entries, "entry spiral horror zampanio");
-  const title = `TODO`;
-  const desc = `TBD`
+  const title = titleCase(randomTitle(chosenTheme)).replace(/\s/g, "") + "Sim";
+  const desc = randomDesc(chosenTheme);
   const html = `
   <a class="title"target="_blank" href="http://knucklessux.com/PuzzleBox/Secrets/ZampanioFAQ/">${title}</a>
   <p class="description">${desc}
   </p>
   `;
-  entry.innerHTML=html;
+  entry.innerHTML = html;
+  createOneShamblingHorror(entry);
 }

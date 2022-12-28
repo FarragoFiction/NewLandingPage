@@ -102,6 +102,7 @@ img#logo{
   margin:13px;
   font-size: 18px;
   font-family: 'nunito', sans-serif;
+  overflow: hidden;
 }
 
 
