@@ -158,7 +158,7 @@ const fetchTags = () => {
 
 const randomTitle = (chosenTheme) => {
   if(stopScrolling){
-    return "StopScrollingSim"
+    return "StopScrolling"
   }
 
   const person = (chosenTheme.pickPossibilityFor(PERSON));
