@@ -41,22 +41,28 @@ const renderEleAsMuteImage = async (source) => {
 
   const ele = source.cloneNode(true); //so i can tweak style to make it perfect
   const title = ele.querySelector(".title");
-  title.style.lineHeight ="20px";
-  title.style.fontSize ="28px";
+  if(title){//trying desperately to make it as close as i can, default styling isn't the same so even tho it has the same css its weird, but i'm increasingly certain its just flat out rendering differences between html and svg
+    title.style.lineHeight ="20px";
+    title.style.fontSize ="28px";
+  
+    title.style.marginTop ="4px";
+    title.style.fontWeight="700";
+    //title.style.marginLeft ="0px";
+    title.style.letterSpacing="-2px";
+    title.style.textDecorationThickness="3px";
+    title.style.textDecorationStyle="solid";
+  }
 
-  title.style.marginTop ="4px";
-  title.style.fontWeight="700";
-  //title.style.marginLeft ="0px";
-  title.style.letterSpacing="-2px";
-  title.style.textDecorationThickness="3px";
-  title.style.textDecorationStyle="solid";
 
   const desc = ele.querySelector(".description");
-  desc.style.marginTop="17px";
-  desc.style.marginLeft="0px";
-  title.style.letterSpacing="1px";
-  desc.style.lineHeight ="20px";
-  desc.style.fontSize ="18px";
+  if(desc){
+    desc.style.marginTop="17px";
+    desc.style.marginLeft="0px";
+    title.style.letterSpacing="1px";
+    desc.style.lineHeight ="20px";
+    desc.style.fontSize ="18px";
+  }
+
 
 
   if(!cached_css){

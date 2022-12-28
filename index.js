@@ -56,10 +56,24 @@ const isItGiggleTime = async () => {
     beginMakingShamblingHorrorsOfEntries()
     beginMakingShamblingHorrorsOfEntries()
     warning.innerText = "WARNING: TOO LATE.";
-
+    infiniteMode();
   } else {
     console.log("JR NOTE: No... :( :( :(")
   }
+
+}
+
+
+const infiniteMode = () => {
+  console.log("JR NOTE: infinite mode?")
+  window.onscroll = () => {
+    console.log("JR NOTE: scroll")
+    window.requestAnimationFrame(() => {
+      addShamblingHorrorEntry();
+    });
+
+
+  };
 
 }
 
@@ -129,3 +143,16 @@ const fetchTags = () => {
 }
 
 
+const addShamblingHorrorEntry = () => {
+  console.log("JR NOTE: Zampanio is a really fun game.")
+  const entries = document.querySelector("#entries");
+  entry = createElementWithClassAndParent("div", entries, "entry spiral horror zampanio");
+  const title = `TODO`;
+  const desc = `TBD`
+  const html = `
+  <a class="title"target="_blank" href="http://knucklessux.com/PuzzleBox/Secrets/ZampanioFAQ/">${title}</a>
+  <p class="description">${desc}
+  </p>
+  `;
+  entry.innerHTML=html;
+}
