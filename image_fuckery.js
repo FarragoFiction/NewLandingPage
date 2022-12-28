@@ -3,9 +3,12 @@ let cached_css;
 
 const beginMakingShamblingHorrorsOfEntries = ()=>{
   const entries = document.querySelectorAll(".entry");
+  //https://freesound.org/people/f-r-a-g-i-l-e/sounds/483159/
   for(let entry of entries){
     createOneShamblingHorror(entry)
   }
+
+
 }
 
 const createOneShamblingHorror = async(entry)=>{
@@ -26,11 +29,10 @@ const createOneShamblingHorror = async(entry)=>{
   shambling_horror.style.top = y -16+ "px";
   shambling_horror.style.left = x -16+ "px";
   //shambling_horror.style.filter="grayscale()";
-  const timing_functions = ["linear","ease"];
+  const timing_functions = ["linear","ease",'ease-in','ease-out','ease-in-out'];
   const animations = ["scaleX","scaleY","scale"];
 
-  shambling_horror.style.animation = `${pickFrom(animations)}  ${getRandomNumberBetween(5,10)}s ${pickFrom(timing_functions)} infinite`
-  shambling_horror.style.animationDelay = `${getRandomNumberBetween(1000,30000)}ms`;
+  shambling_horror.style.animation = `${pickFrom(animations)}  ${getRandomNumberBetween(5,10)}s ${pickFrom(timing_functions)} ${getRandomNumberBetween(10,50)}s infinite`
   //document.querySelector("body").append(image)
 
 }

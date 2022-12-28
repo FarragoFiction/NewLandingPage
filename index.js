@@ -1,3 +1,6 @@
+let  giggleTime = true;
+
+const giggling = new Audio(src="483159__f-r-a-g-i-l-e__children-s-toys-laughing.mp3");
 
 window.onload = ()=>{
   setCount();
@@ -88,5 +91,8 @@ window.onclick = () => {
   const audio = document.querySelector("#audio");
   if (audio && !audio.playing) {
     audio.play();
+  }
+  if(giggleTime  && !giggling.playing){
+    giggling.play();
   }
 }
