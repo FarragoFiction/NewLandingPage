@@ -1,4 +1,5 @@
 
+let cached_css;
 
 const beginMakingShamblingHorrorsOfEntries = ()=>{
   const entries = document.querySelectorAll(".entry");
@@ -9,12 +10,28 @@ const beginMakingShamblingHorrorsOfEntries = ()=>{
 
 const createOneShamblingHorror = async(entry)=>{
   let image = await renderEleAsMuteImage(entry);
-  console.log("JR NOTE: entry image is",image)
   const shambling_horror = createElementWithClassAndParent("div",entry, "shambling-horror");
   shambling_horror.style.background=`url(${image.src})`;
-  shambling_horror.style.width = image.width;
-  shambling_horror.style.height = image.height;
-  document.querySelector("body").append(image)
+  shambling_horror.style.backgroundRepeat = 'no-repeat';
+  const normalWidth = image.width;
+  const normalHeight = image.height;
+
+  shambling_horror.style.width = getRandomNumberBetween(5, 50) + "px";
+  shambling_horror.style.height = getRandomNumberBetween(5, 50) + "px";
+
+  const x = getRandomNumberBetween(0, normalWidth);
+  const y = getRandomNumberBetween(0, normalHeight) ;
+  shambling_horror.style.backgroundPositionX = "-"+x + "px";
+  shambling_horror.style.backgroundPositionY = "-"+y + "px";
+  shambling_horror.style.top = y -16+ "px";
+  shambling_horror.style.left = x -16+ "px";
+  //shambling_horror.style.filter="grayscale()";
+  const timing_functions = ["linear","ease"];
+  const animations = ["scaleX","scaleY","scale"];
+
+  shambling_horror.style.animation = `${pickFrom(animations)}  ${getRandomNumberBetween(5,10)}s ${pickFrom(timing_functions)} infinite`
+  shambling_horror.style.animationDelay = `${getRandomNumberBetween(1000,30000)}ms`;
+  //document.querySelector("body").append(image)
 
 }
 
@@ -40,15 +57,16 @@ const renderEleAsMuteImage = async (source) => {
   desc.style.fontSize ="18px";
 
 
-  console.log("JR NOTE: outer html is", ele.outerHTML)
+  if(!cached_css){
+     cached_css = await httpGetAsync("http://farragofiction.com/SampleNewHomePage/index.css");
 
-  const css = await httpGetAsync("http://farragofiction.com/SampleNewHomePage/index.css");
+  }
   const margin = 16;
 
   var data = `<svg xmlns="http://www.w3.org/2000/svg" width="${source.offsetWidth + margin}" height="${source.offsetHeight + margin}">` +
     '<foreignObject width="100%" height="100%">' +
     '<div xmlns="http://www.w3.org/1999/xhtml">' +
-    `<style>${css}</style>` +
+    `<style>${cached_css}</style>` +
     ele.outerHTML +
     '</div>' +
     '</foreignObject>' +
@@ -59,8 +77,8 @@ const renderEleAsMuteImage = async (source) => {
   const DOMURL = window.URL || window.webkitURL || window;
 
   const img = new Image();
-  img.width = getRandomNumberBetween(5,source.offsetWidth + margin);
-  img.height = getRandomNumberBetween(5,source.offsetHeight + margin);
+  img.width = source.offsetWidth + margin
+  img.height = source.offsetHeight + margin
 
   const svg = new Blob([data], {
     type: 'image/svg+xml;charset=utf-8'
