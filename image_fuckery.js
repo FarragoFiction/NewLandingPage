@@ -18,13 +18,34 @@ const createOneShamblingHorror = async(entry)=>{
 
 }
 
-const renderEleAsMuteImage = async (ele) => {
+const renderEleAsMuteImage = async (source) => {
 
+  const ele = source.cloneNode(true); //so i can tweak style to make it perfect
+  const title = ele.querySelector(".title");
+  title.style.lineHeight ="20px";
+  title.style.fontSize ="28px";
+
+  title.style.marginTop ="4px";
+  title.style.fontWeight="700";
+  //title.style.marginLeft ="0px";
+  title.style.letterSpacing="-2px";
+  title.style.textDecorationThickness="3px";
+  title.style.textDecorationStyle="solid";
+
+  const desc = ele.querySelector(".description");
+  desc.style.marginTop="17px";
+  desc.style.marginLeft="0px";
+  title.style.letterSpacing="1px";
+  desc.style.lineHeight ="20px";
+  desc.style.fontSize ="18px";
+
+
+  console.log("JR NOTE: outer html is", ele.outerHTML)
 
   const css = await httpGetAsync("http://farragofiction.com/SampleNewHomePage/index.css");
   const margin = 16;
 
-  var data = `<svg xmlns="http://www.w3.org/2000/svg" width="${ele.offsetWidth + margin}" height="${ele.offsetHeight + margin}">` +
+  var data = `<svg xmlns="http://www.w3.org/2000/svg" width="${source.offsetWidth + margin}" height="${source.offsetHeight + margin}">` +
     '<foreignObject width="100%" height="100%">' +
     '<div xmlns="http://www.w3.org/1999/xhtml">' +
     `<style>${css}</style>` +
@@ -38,8 +59,8 @@ const renderEleAsMuteImage = async (ele) => {
   const DOMURL = window.URL || window.webkitURL || window;
 
   const img = new Image();
-  img.width = ele.offsetWidth + margin;
-  img.height = ele.offsetHeight + margin;
+  img.width = getRandomNumberBetween(5,source.offsetWidth + margin);
+  img.height = getRandomNumberBetween(5,source.offsetHeight + margin);
 
   const svg = new Blob([data], {
     type: 'image/svg+xml;charset=utf-8'

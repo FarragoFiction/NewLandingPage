@@ -23,7 +23,9 @@ body {
 }
 
 .fake-background {
-  width: 100%;
+  min-width: 100%;
+  min-height: 100%;
+  background-repeat: repeat;
   opacity: 0.4;
   position: fixed;
   filter: grayscale(1);
@@ -82,7 +84,7 @@ img#logo{
   z-index: 1000;
   top:-16px;
   left: -16px;
-  filter: grayscale();
+  filter: grayscale(.1);
 }
 
 .entry{
@@ -102,17 +104,24 @@ img#logo{
 }
 
 
-
-
-
-a{
+.title{
   font-weight: bold;
   color: #333;
   font-size: 28px;
+  text-decoration: underline;
+  display: block;
+  line-height: 20px;
+  margin-top:  0px;
+  margin-left: 0px;
+  line-height: 20px;
 }
 
 a:visited{
-  color: black;
+  font-weight: bold;
+  color: #333;
+  font-size: 28px;
+  text-decoration: underline;
+  display: block;
 }
 
 a:hover{
