@@ -32,7 +32,7 @@ const createOneShamblingHorror = async(entry)=>{
   const timing_functions = ["linear","ease",'ease-in','ease-out','ease-in-out'];
   const animations = ["scaleX","scaleY","scale"];
 
-  shambling_horror.style.animation = `${pickFrom(animations)}  ${getRandomNumberBetween(5,10)}s ${pickFrom(timing_functions)} ${getRandomNumberBetween(10,50)}s infinite`
+  shambling_horror.style.animation = `${pickFrom(animations)}  ${getRandomNumberBetween(5,10)}s ${pickFrom(timing_functions)} ${getRandomNumberBetween(1,30)}s infinite`
   //document.querySelector("body").append(image)
 
 }
