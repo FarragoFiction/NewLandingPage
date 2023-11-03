@@ -47,6 +47,8 @@ const isItGiggleTime = async () => {
     console.log("JR NOTE: Yes!!! :) :) :)")
     initThemes();
     if(hackedGiggles){
+      alert("You are entering a place that may make you feel uneasy. Obsession is a dangerous thing. You may wish to turn back.")
+
       infiniteMode(); //so i can debug
     }
 
