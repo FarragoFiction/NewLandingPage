@@ -42,6 +42,15 @@ const extensionPattern = new RegExp(`\\\.(${imageExtendsions.join("|")})\$`);
   }
 }
 
+const isItFriday = ()=>{
+  //midnight and fridays are wungle time
+  const date = new Date();
+  if (date.getHours() == 0 || date.getDay() === 5) {
+    return true;
+  }
+  return false;
+}
+
  const sleep = (ms) => {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
