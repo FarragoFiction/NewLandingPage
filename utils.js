@@ -34,7 +34,7 @@ const extensionPattern = new RegExp(`\\\.(${imageExtendsions.join("|")})\$`);
       files.push(item);
     }
   }
-
+//i found zampanio
   return files;
   }catch(e){
     console.log("JR NOTE: error",e)
