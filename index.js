@@ -46,7 +46,7 @@ const isItGiggleTime = async () => {
   if (hackedGiggles || new Date().getHours() == 0 || new Date().getDay() === 5) {
     console.log("JR NOTE: Yes!!! :) :) :)")
     initThemes();
-    if(hackedGiggles){
+    if (hackedGiggles) {
       alert("You are entering a place that may make you feel uneasy. Obsession is a dangerous thing. You may wish to turn back.")
 
       infiniteMode(); //so i can debug
@@ -129,8 +129,8 @@ const setCount = () => {
       }
     }
   }
-  if(count >200){
-    stopScrolling=true;
+  if (count > 200) {
+    stopScrolling = true;
   }
   countEle.innerText = "Count: " + count;
 
@@ -159,7 +159,7 @@ const fetchTags = () => {
 }
 
 const randomTitle = (chosenTheme) => {
-  if(stopScrolling){
+  if (stopScrolling) {
     return "StopScrolling"
   }
 
@@ -181,7 +181,7 @@ const randomTitle = (chosenTheme) => {
 }
 
 const randomDesc = (chosenTheme) => {
-  if(stopScrolling){
+  if (stopScrolling) {
     return "Please just stop. What are you doing to yourself. To your computer. There are too many. Just stop. Please. Leave. Go hydrate. Touch grass. I don't care what but it can't be this. Not anymore."
   }
   const person = titleCase((chosenTheme.pickPossibilityFor(PERSON)));

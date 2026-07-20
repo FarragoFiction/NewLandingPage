@@ -22,17 +22,72 @@
 
 
 <body>
+  <div id="zampanio-webring-host">
+    <script>
+      /*same basic concepts as: https://irt.org/articles/js085/ (check what host you're on, make that figure out what your neighbors are)
+        but without the absolutely insane trust the old internet used to have
+        (please do not blindly run a javascript file someone else hosts, 
+        even really reputatable businesses can get hacked and then the .js file 
+        you used to know what was in it gets switched out for bitcoin mining or whatever)
+        
+      */
+      (async () => {
+        const response = await fetch('https://laughing.observer/LTESim/webring.json');
+
+        // 2. Check if the network response is successful (status 200-299)
+        if (!response.ok) {
+          throw new Error(`:( :( :( Did the webring die? ${response.status}`);
+        }
+        const { webring } = await response.json();
+        let currentIndex = webring.indexOf(window.location.href);
+        if (currentIndex === -1) {
+          console.error("JR NOTE: Hey, uh, this exact page isn't part of the webring. If you want to add it, ask JR (maybe the guestbook?) ");
+          currentIndex = 0;
+        }
+        //handles going to the end if you try to go left from the start, or going to the start if you try to go right from the end
+        const wrappedIndex = (index, length) => {
+          console.log("JR NOTE:wrappedIndex ", index, length)
+          return (index % length + length) % length;
+        }
+
+        const left = webring[wrappedIndex(currentIndex - 1, webring.length)];
+        const right = webring[wrappedIndex(currentIndex + 1, webring.length)];
+
+        const targetEle = document.querySelector("#zampanio-webring-host");
+        targetEle.style.display = "flex";
+        targetEle.style.gap = "13px";
+        //absolute most important thing here is you don't use innerHTML for anything you got from the internet. we fetched the href link from the internet so we make an anchor element the slow way and set its href, rather than anything that risks arbitrary javascript being fired off
+        const leftEle = document.createElement("a");
+        leftEle.innerText = "<==";
+        leftEle.href = left;
+
+        const rightEle = document.createElement("a");
+        rightEle.innerText = "==>";
+        rightEle.href = right;
+
+        const centerEle = document.createElement("a");
+        centerEle.href = "https://laughing.observer/LTESim/webring";
+        centerEle.innerText = "Zampanio Webring!"
+
+        targetEle.append(leftEle);
+        targetEle.append(centerEle);
+        targetEle.append(rightEle);
+
+
+
+
+
+      })();
+
+    </script>
+  </div>
   <img src="http://www.farragofiction.com/AudioLogs/images/wallpaper.png" class="fake-background">
   <div class="flourescent_lights"></div>
 
-  <div id="warning-real">
+  <div id="warning">
     <a href='credits_and_warnings.html'>WARNING: FARRAGOFICTION PRODUCES CONTENT WITH UNREALITY AND HORROR THEMES, IN
       ADDITION TO NICE AND CHILL THINGS. CLICK FOR DETAILS.
     </a>
-  </div>
-
-  <div id="warning">
-    Zampanio is a really fun game, you should play it.
   </div>
   <div id="container">
 
@@ -56,28 +111,11 @@
         </p>
       </div>
 
-      <div class="entry zampanio horror sim main spiral 2026 east">
+      <div class="entry zampanio horror sim main spiral 2026">
         <a class="title" target="_blank" href="http://farragofiction.com/MallSim/">MallSim</a>
         <p class="description">Look it was going to happen eventually. SBURBSim but for Zampanio. <br><br>Read
           procedural stories about cultists delving into an abandoned mall and
           braving fates worse than death in order to eat some Harvest Fruit.
-        </p>
-      </div>
-
-      <div class="entry zampanio horror sim main spiral north">
-        <a class="title" target="_blank"
-          href="http://farragofiction.com/CatalystsBathroomSim/NORTH/NORTH/NORTH/NORTH/NORTH/bathroom.html">TruthSim</a>
-        <p class="description">Originally the only way to find this was by wandering the bathroom forever. Then I added
-          it to ZampanioSim's rotation. By now, it's been out
-          long enough it deserves to be on the main page, lol. Play an idle game with Truth.
-        </p>
-      </div>
-
-      <div class="entry zampanio horror sim main spiral east">
-        <a class="title" target="_blank" href="http://farragofiction.com/ZampanioSimEastEastEast">TruthSim</a>
-        <p class="description">Originally the only way to find this was by wandering the bathroom forever. Then I added
-          it to ZampanioSim's rotation. By now, it's been out
-          long enough it deserves to be on the main page, lol. Play an idle game with Truth.
         </p>
       </div>
 
@@ -97,7 +135,7 @@
         </a>
         <p class="description">Do you wish search engines were still as good as they were back at the turn of the
           millenium?
-          <bR><br>Walk with us down memory lane. WARNING: Hub of my LLM-using vent art
+          <bR><br>Walk with us down memory lane.
         </p>
       </div>
 
@@ -106,6 +144,40 @@
         <p class="description">Goodbye Angelfire, let me build you a tribute in the only way I know how.
           <br><br>I'll add rambles to it periodically, but don't expect them to make sense. Stream of consciousness is
           the POINT of a Longest Text Ever.
+        </p>
+      </div>
+
+      <div class="entry zampanio spiral horror new minisim puzzle arg unreality liminal hub">
+        <a class="title" target="_blank" href="http://eyedolgames.com/JackElope/">JackElope</a>
+        <p class="description">Yet another online liminal space, it's also inspired by the tumblr porn bot apocalypse.
+          If I survive my move maybe I'll make a liminal version of Tumblr next ;) ;) ;)
+        </p>
+      </div>
+
+      <div class="entry zampanio spiral horror new minisim puzzle arg unreality liminal hub">
+        <a class="title" target="_blank" href="http://eyedolgames.com/Eyedlr/?seed=3900216">Eyedlr</a>
+        <p class="description">Did you ever want to know what Tumblr would be like if the porn bots won? Good. Me,too.
+          (It is not what it is, it lies to the North, but only sometimes.)
+        </p>
+      </div>
+
+      <div class="entry zampanio spiral horror new minisim puzzle arg unreality liminal">
+        <a class="title" target="_blank" href="http://eyedolgames.com/ZWorld/">ZWorld</a>
+        <p class="description">Did I forget to link ZWorld? The only amusement park where waiting in line is half the
+          fun!
+        </p>
+      </div>
+
+
+
+
+      <div class="entry sim zampanio game spiral horror main arg puzzle unreality behind-the-scenes">
+        <a class="title" target="_blank" href="http://farragofiction.com/CatalystsBathroomSim/bathroom">Bathroom Sim</a>
+        <p data-attr-jr-note="yes, this DOES get cut off. if you're reading this you already know how to see the secret within :) :) ;)"
+          class="description">Started out as a post lavinraca/lavinraca in-joke but quickly became an infinitely
+          spiralling maze (as one does) where I store works in progress or other behind the scenes content. If you have
+          trouble affording things in the shops (you HAVE found the shops, right?) I'd seek out the Interloper. Tell
+          them 413 send you and just spam that.
         </p>
       </div>
 
@@ -139,6 +211,13 @@
         </p>
       </div>
 
+      <div class="entry zampanio spiral horror new minisim puzzle arg unreality liminal">
+        <a class="title" target="_blank" href="http://eyedolgames.com/Zampanini/index.html">Zampanini</a>
+        <p class="description">I'm endlessly fascinated with liminal spaces online. Be careful not to get caught, you
+          REALLY don't want to be exploring a not food delivery service forever.
+        </p>
+      </div>
+
 
       <div class="entry zampanio spiral horror new unreality liminal">
         <a class="title" target="_blank" href="http://eyedolgames.com/PersonalityQuiz/">Personality Quiz</a>
@@ -153,6 +232,13 @@
         </p>
       </div>
 
+      <div class="entry new sim horror game puzzle arg spiral zampanio minisim unreality liminal">
+        <a class="title" target="_blank" href="99RoomsSim">99RoomsSim</a>
+        <p class="description">Tired of wandering the Backrooms? Settle in for some nice and relaxing picture viewing.
+          Wander far more than 99 rooms as you look for Doors and avoid (or collect) glitches.
+        </p>
+      </div>
+
 
       <div class="entry new sim arg spiral zampanio minisim">
         <a class="title" target="_blank" href="FruitSim">FruitSim</a>
@@ -164,7 +250,7 @@
         <a class="title" target="_blank" href="RabbitSim">RabbitSim</a>
         <p class="description">Ya'll remember Rabb.it? That screensharing watch party thing that died juuuust before the
           Pandemic hit? I made a simulation of it so I could tell a story. My second entry in the Ludum Dare contest, it
-          actually did p okay! (LLM video used for a reason)
+          actually did p okay!
         </p>
       </div>
 
@@ -260,6 +346,19 @@
           steep a price.
         </p>
       </div>
+
+
+
+
+
+      <div class="entry horror sim puzzle spiral arg zampanio minisim unreality">
+        <a class="title" target="_blank" href="http://knucklessux.com/HydrationSim/?seed=133387367">HydrationSim</a>
+        <p class="description">You DO know farragofiction.com isn't the only site I run, didn't you? Remember to stay
+          hydrated. (Runs on the ZampanioSim engine used by my first three branches of Zampanio.)
+        </p>
+      </div>
+
+
 
       <div class="entry game minisim dart tool">
         <a class="title" target="_blank" href="MindGardenSim">Garden of the Mind</a>
